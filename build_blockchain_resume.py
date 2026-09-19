@@ -93,7 +93,7 @@ doc.addPageTemplates(PageTemplate(id="resume-pages", frames=[frame], onPage=page
 story = []
 story.extend([
     Paragraph("TIMOTHY CAMPBELL", styles["ResumeName"]),
-    Paragraph("Newark, NJ &nbsp;|&nbsp; (347) 570-0360 &nbsp;|&nbsp; timcamp25@gmail.com &nbsp;|&nbsp; <link href='https://timmycamp.xyz' color='#245CFF'>timmycamp.xyz</link>", styles["ResumeContact"]),
+    Paragraph("Newark, NJ &nbsp;|&nbsp; (347) 570-0360 &nbsp;|&nbsp; timcamp25@gmail.com &nbsp;|&nbsp; <link href='https://timmycamp-xyz.vercel.app/' color='#245CFF'>timmycamp-xyz.vercel.app</link>", styles["ResumeContact"]),
     Paragraph("Blockchain Product &amp; Solutions | Technical Project Manager", styles["ResumeTitle"]),
 ])
 
