@@ -178,6 +178,21 @@ button { color: inherit; font: inherit; }
 .enterprise-grid span { color: var(--signal); font-size: 0.75rem; font-weight: 800; }
 .enterprise-grid h3 { margin: 64px 0 18px; font-size: 1.45rem; letter-spacing: -0.03em; }
 .enterprise-grid p { margin: 0; color: var(--muted); line-height: 1.62; }
+.enterprise-detail { grid-column: 2; margin-top: 8px; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+.enterprise-detail summary { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 24px 0; cursor: pointer; list-style: none; font-weight: 700; }
+.enterprise-detail summary::-webkit-details-marker { display: none; }
+.enterprise-detail summary small { color: var(--signal); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; }
+.triage-layout { display: grid; grid-template-columns: 1.4fr 0.6fr; gap: 56px; padding: 14px 0 46px; }
+.triage-flow { border-top: 1px solid var(--line); }
+.triage-flow article { display: grid; grid-template-columns: 44px 1fr; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.triage-flow article > span { color: var(--signal); font-size: 0.73rem; font-weight: 800; }
+.triage-flow h3 { margin: 0 0 6px; font-size: 1rem; }
+.triage-flow p { margin: 0; color: var(--muted); line-height: 1.5; }
+.impact-estimate { align-self: start; padding: 28px; background: var(--ink); color: white; }
+.impact-estimate > p:first-child { margin: 0 0 28px; color: var(--lime); font-size: 0.73rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; }
+.impact-estimate strong { display: block; font-size: clamp(3.5rem, 7vw, 6rem); font-weight: 620; letter-spacing: -0.07em; line-height: 0.9; }
+.impact-estimate h3 { margin: 12px 0 28px; font-size: 1.15rem; }
+.impact-estimate > p:last-child { margin: 0; color: #bcbcbc; font-size: 0.82rem; line-height: 1.55; }
 
 .lens-section { border-top: 1px solid var(--ink); }
 .lens-tabs { display: flex; margin-top: 60px; border-bottom: 1px solid var(--ink); }
@@ -214,6 +229,7 @@ footer { min-height: 100px; display: flex; justify-content: space-between; align
   .section-intro { grid-template-columns: 1fr; gap: 28px; }
   .enterprise-section { grid-template-columns: 60px 1fr; }
   .enterprise-grid { grid-template-columns: 1fr; }
+  .triage-layout { grid-template-columns: 1fr; }
   .enterprise-grid article { min-height: auto; padding: 28px 0; border-right: 0; border-bottom: 1px solid var(--line); }
   .enterprise-grid h3 { margin-top: 30px; }
   .lens-detail { grid-template-columns: 1fr; gap: 44px; }
@@ -256,6 +272,7 @@ footer { min-height: 100px; display: flex; justify-content: space-between; align
   .stack-row { padding: 26px 24px; }
   .enterprise-section { grid-template-columns: 1fr; gap: 22px; }
   .enterprise-grid { grid-column: 1; }
+  .enterprise-detail { grid-column: 1; }
   .lens-tabs { flex-direction: column; border-top: 1px solid var(--ink); }
   .lens-tabs button { min-height: 56px; border-right: 0; border-bottom: 1px solid var(--line); text-align: left; }
   .approach-list article { grid-template-columns: 42px 1fr; }

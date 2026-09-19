@@ -12,9 +12,9 @@
       urlLabel: "View live product",
       status: "Production system",
       summary:
-        "A peer-to-peer fashion marketplace that makes crypto useful for buying and selling real products.",
+        "A borderless, trust-minimized fashion marketplace built to play by the same rules as crypto.",
       problem:
-        "Crypto is powerful, but rarely useful in everyday life. Set applies it to a familiar need: buying and selling clothes.",
+        "If crypto is borderless and trustless, its marketplaces should be too. Set applies that ethos to a familiar need: buying and selling clothes anywhere.",
       role:
         "I designed and built the product, marketplace architecture, commerce workflows, privacy controls, and operational safeguards.",
       outcomes: [
@@ -51,6 +51,11 @@
           detail:
             "Wallet-signature authentication establishes identity. Shipping and tracking data remain encrypted at rest, while keyed hashes support duplicate detection without exposing plaintext values.",
         },
+        {
+          title: "Design global access and dispute resolution into the system",
+          detail:
+            "The target architecture treats language, local-currency display, and neutral dispute resolution as core marketplace capabilities rather than regional add-ons.",
+        },
       ],
       hardening: [
         "Durable, single-use wallet-auth nonces and HTTP-only sessions",
@@ -62,6 +67,8 @@
       ],
       planned: [
         "Native-SOL V2 escrow with buyer-paid fees and deterministic refund accounting",
+        "Local-currency conversion for SOL-denominated marketplace prices",
+        "English-canonical content with derived multilingual experiences",
         "Cross-chain dispute resolution using LayerZero, Arbitrum, and Kleros",
         "Append-only reputation facts with versioned, role-specific calculations",
         "Future USDC and EVM settlement boundaries",
@@ -149,20 +156,20 @@
 
   const roleLenses = [
     {
+      id: "blockchain",
+      label: "Blockchain Solutions",
+      title: "I turn on-chain capability into a product people can actually use.",
+      body:
+        "I connect smart contracts, wallets, indexing, off-chain data, privacy, and operations around a clear customer need.",
+      evidence: ["Solana + Anchor programs", "Escrow and marketplace state", "Indexing and reconciliation", "Cross-chain architecture"],
+    },
+    {
       id: "architecture",
       label: "Solutions Architecture",
       title: "I turn business needs into systems teams can trust and operate.",
       body:
-        "I connect business requirements to secure, reliable systems with clear boundaries, ownership, and tradeoffs.",
-      evidence: ["System boundaries and ADRs", "Security and privacy controls", "Reliability and recovery", "Integration and release strategy"],
-    },
-    {
-      id: "ai",
-      label: "AI Engineering",
-      title: "I use AI where it can remove friction or create a better experience.",
-      body:
-        "I connect models to useful workflows, measurable quality, manageable cost, and clear human ownership.",
-      evidence: ["LoRA training and prompt contracts", "Modal inference workflows", "RAG-assisted triage", "Evaluation, latency, and cost thinking"],
+        "I connect requirements to secure, reliable systems with clear boundaries, ownership, integrations, and tradeoffs.",
+      evidence: ["System boundaries and ADRs", "Security and privacy", "Reliability and recovery", "Integration and release strategy"],
     },
     {
       id: "product",
@@ -176,7 +183,7 @@
 
   function App() {
     const [activeCase, setActiveCase] = useState("set");
-    const [activeLens, setActiveLens] = useState("architecture");
+    const [activeLens, setActiveLens] = useState("blockchain");
     const [openPanels, setOpenPanels] = useState({});
     const study = useMemo(() => caseStudies.find((item) => item.id === activeCase), [activeCase]);
     const lens = useMemo(() => roleLenses.find((item) => item.id === activeLens), [activeLens]);
@@ -193,11 +200,11 @@
   }
 
   function Hero() {
-    return h("section", { id: "top", className: "hero" }, h("div", { className: "hero-copy" }, h("p", { className: "kicker" }, "Product · AI · Solutions"), h("h1", null, "I turn difficult problems into useful products."), h("p", { className: "lede" }, "I connect customer needs, technical decisions, and delivery across AI, cloud, and product teams."), h("div", { className: "hero-actions" }, h("a", { className: "button button-dark", href: "#work" }, "See my work"), h("a", { className: "text-link", href: "mailto:hello@timmycamp.xyz" }, "Let’s talk", h("span", null, "↗")))), h("aside", { className: "hero-brief", "aria-label": "How I help" }, h("p", { className: "brief-label" }, "How I help"), h("p", { className: "brief-title" }, "Find the real need. Shape the right solution. Help the team deliver it."), h("dl", null, h("div", null, h("dt", null, "Clarify"), h("dd", null, "What problem are we solving?")), h("div", null, h("dt", null, "Shape"), h("dd", null, "What is the practical path?")), h("div", null, h("dt", null, "Deliver"), h("dd", null, "How do we make it real?")))));
+    return h("section", { id: "top", className: "hero" }, h("div", { className: "hero-copy" }, h("p", { className: "kicker" }, "Blockchain · Product · Solutions"), h("h1", null, "I turn blockchain infrastructure into useful products."), h("p", { className: "lede" }, "I connect on-chain systems, customer needs, and delivery—then build the experience around them."), h("div", { className: "hero-actions" }, h("a", { className: "button button-dark", href: "#work" }, "Explore Set"), h("a", { className: "text-link", href: "mailto:hello@timmycamp.xyz" }, "Let’s talk", h("span", null, "↗")))), h("aside", { className: "hero-brief", "aria-label": "What I bring" }, h("p", { className: "brief-label" }, "What I bring"), h("p", { className: "brief-title" }, "Blockchain depth with product judgment and enterprise delivery experience."), h("dl", null, h("div", null, h("dt", null, "Build"), h("dd", null, "On-chain programs and user workflows")), h("div", null, h("dt", null, "Connect"), h("dd", null, "Wallets, data, APIs, and operations")), h("div", null, h("dt", null, "Lead"), h("dd", null, "Requirements, tradeoffs, and delivery")))));
   }
 
   function ProofStrip() {
-    const items = [["Discover", "Start with the actual need"], ["Design", "Make tradeoffs understandable"], ["Deliver", "Connect people, product, and technology"], ["Improve", "Learn from real use and operations"]];
+    const items = [["On-chain", "Anchor marketplace + escrow"], ["Off-chain", "Indexer + PostgreSQL read model"], ["Private", "Encrypted fulfillment data"], ["Global", "Cross-chain dispute design"]];
     return h("section", { className: "proof-strip", "aria-label": "Portfolio evidence" }, items.map(([value, label]) => h("div", { key: label }, h("strong", null, value), h("span", null, label))));
   }
 
@@ -226,11 +233,24 @@
   }
 
   function EnterpriseWork() {
-    return h("section", { id: "enterprise", className: "enterprise-section" }, h("div", { className: "section-number" }, "03"), h("div", { className: "enterprise-copy" }, h("p", { className: "kicker" }, "Team impact · AssistRx"), h("h2", null, "Giving delivery teams time back."), h("p", { className: "enterprise-lede" }, "I introduced AI-assisted workflows that reduced repetitive work while keeping decisions with the team.")), h("div", { className: "enterprise-grid" }, h("article", null, h("span", null, "01"), h("h3", null, "Faster triage"), h("p", null, "RAG-assisted preparation reduced recurring analysis from hours to minutes in observed workflows.")), h("article", null, h("span", null, "02"), h("h3", null, "Smoother releases"), h("p", null, "Automated repetitive CAB, release, dependency, risk, and reporting work.")), h("article", null, h("span", null, "03"), h("h3", null, "Practical adoption"), h("p", null, "Fit AI into existing team routines while keeping people accountable for decisions."))));
+    return h("section", { id: "enterprise", className: "enterprise-section" },
+      h("div", { className: "section-number" }, "03"),
+      h("div", { className: "enterprise-copy" }, h("p", { className: "kicker" }, "Team impact · AssistRx"), h("h2", null, "Giving delivery teams time back."), h("p", { className: "enterprise-lede" }, "I architect internal solutions that help Scrum Masters and delivery teams spend less time assembling information and more time acting on it.")),
+      h("div", { className: "enterprise-grid" }, h("article", null, h("span", null, "01"), h("h3", null, "Faster triage"), h("p", null, "RAG-assisted preparation brought ticket history, documentation, and delivery context into one review.")), h("article", null, h("span", null, "02"), h("h3", null, "Automated operations"), h("p", null, "Used Confluence, Atlassian Rovo, and automation rules for reporting, recurring tasks, CAB, releases, dependencies, and risk.")), h("article", null, h("span", null, "03"), h("h3", null, "Practical adoption"), h("p", null, "Designed around existing Agile routines while keeping judgment and accountability with the team."))),
+      h("details", { className: "enterprise-detail" },
+        h("summary", null, h("span", null, "How RAG-assisted triage worked"), h("small", null, "View workflow")),
+        h("div", { className: "triage-layout" },
+          h("div", { className: "triage-flow" },
+            [["01", "Retrieve", "Collect the ticket, related work, support history, and approved Confluence guidance."], ["02", "Synthesize", "Summarize the issue, likely ownership, dependencies, risk, and missing information."], ["03", "Recommend", "Prepare routing and next-step suggestions for the team to review."], ["04", "Decide", "A Scrum Master or technical owner validates the context and makes the decision."]].map(([number, title, body]) => h("article", { key: number }, h("span", null, number), h("div", null, h("h3", null, title), h("p", null, body))))
+          ),
+          h("aside", { className: "impact-estimate" }, h("p", null, "Modeled impact"), h("strong", null, "~70%"), h("h3", null, "less preparation time"), h("p", null, "Based on a 45–60 minute manual review compared with a 10–15 minute AI-assisted review. This is an estimate pending formal usage telemetry."))
+        )
+      )
+    );
   }
 
   function RoleLens({ lens, activeLens, setActiveLens }) {
-    return h("section", { id: "capabilities", className: "lens-section" }, h("div", { className: "section-intro" }, h("p", { className: "kicker" }, "How I can help"), h("h2", null, "One practice. Three roles."), h("p", null, "Select the lens most relevant to your team.")), h("div", { className: "lens-tabs", role: "tablist", "aria-label": "Professional capabilities" }, roleLenses.map((item) => h("button", { key: item.id, type: "button", role: "tab", className: activeLens === item.id ? "active" : "", onClick: () => setActiveLens(item.id), "aria-selected": activeLens === item.id }, item.label))), h("div", { className: "lens-detail", role: "tabpanel" }, h("div", null, h("h3", null, lens.title), h("p", null, lens.body)), h("ul", null, lens.evidence.map((item) => h("li", { key: item }, item)))));
+    return h("section", { id: "capabilities", className: "lens-section" }, h("div", { className: "section-intro" }, h("p", { className: "kicker" }, "How I can help"), h("h2", null, "Blockchain first. Product always."), h("p", null, "Select the lens most relevant to your team.")), h("div", { className: "lens-tabs", role: "tablist", "aria-label": "Professional capabilities" }, roleLenses.map((item) => h("button", { key: item.id, type: "button", role: "tab", className: activeLens === item.id ? "active" : "", onClick: () => setActiveLens(item.id), "aria-selected": activeLens === item.id }, item.label))), h("div", { className: "lens-detail", role: "tabpanel" }, h("div", null, h("h3", null, lens.title), h("p", null, lens.body)), h("ul", null, lens.evidence.map((item) => h("li", { key: item }, item)))));
   }
 
   function Approach() {
@@ -239,11 +259,11 @@
   }
 
   function Contact() {
-    return h("section", { id: "contact", className: "contact-section" }, h("p", { className: "kicker" }, "Let’s solve something useful"), h("h2", null, "Bring me the messy problem."), h("p", null, "I’m interested in solutions architecture, applied AI, and technical product roles."), h("a", { className: "button button-light", href: "mailto:hello@timmycamp.xyz" }, "Start a conversation ↗"));
+    return h("section", { id: "contact", className: "contact-section" }, h("p", { className: "kicker" }, "Let’s build useful crypto products"), h("h2", null, "Bring me the protocol. I’ll help shape the product around it."), h("p", null, "I’m focused on blockchain solutions architecture, ecosystem integrations, and technical product roles."), h("a", { className: "button button-light", href: "mailto:hello@timmycamp.xyz" }, "Start a conversation ↗"));
   }
 
   function Footer() {
-    return h("footer", null, h("span", null, "Timmy Campbell"), h("span", null, "Technical Product Architect"), h("span", null, "timmycamp.xyz"));
+    return h("footer", null, h("span", null, "Timmy Campbell"), h("span", null, "Blockchain Product & Solutions"), h("span", null, "timmycamp.xyz"));
   }
 
   ReactDOM.createRoot(document.getElementById("root")).render(h(App));
