@@ -196,7 +196,7 @@
   }
 
   function Header() {
-    return h("header", { className: "site-header" }, h("a", { href: "#top", className: "wordmark" }, "Timmy Campbell"), h("nav", { "aria-label": "Primary navigation" }, h("a", { href: "#work" }, "Work"), h("a", { href: "#enterprise" }, "Team impact"), h("a", { href: "#capabilities" }, "How I help"), h("a", { href: "#contact" }, "Contact")), h("a", { className: "header-cta", href: "mailto:hello@timmycamp.xyz" }, "Let’s talk"));
+    return h("header", { className: "site-header" }, h("a", { href: "#top", className: "wordmark" }, "Timmy Campbell"), h("nav", { "aria-label": "Primary navigation" }, h("a", { href: "#work" }, "Work"), h("a", { href: "#enterprise" }, "Team impact"), h("a", { href: "#capabilities" }, "How I help"), h("a", { href: "./resume/Timothy_Campbell_Blockchain_Resume.pdf", target: "_blank", rel: "noreferrer" }, "Résumé"), h("a", { href: "#contact" }, "Contact")), h("a", { className: "header-cta", href: "mailto:hello@timmycamp.xyz" }, "Let’s talk"));
   }
 
   function Hero() {
@@ -259,7 +259,7 @@
   }
 
   function Contact() {
-    return h("section", { id: "contact", className: "contact-section" }, h("p", { className: "kicker" }, "Let’s build useful crypto products"), h("h2", null, "Bring me the protocol. I’ll help shape the product around it."), h("p", null, "I’m focused on blockchain solutions architecture, ecosystem integrations, and technical product roles."), h("a", { className: "button button-light", href: "mailto:hello@timmycamp.xyz" }, "Start a conversation ↗"));
+    return h("section", { id: "contact", className: "contact-section" }, h("p", { className: "kicker" }, "Let’s build useful crypto products"), h("h2", null, "Bring me the protocol. I’ll help shape the product around it."), h("p", null, "I’m focused on blockchain solutions architecture, ecosystem integrations, and technical product roles."), h("div", { className: "contact-actions" }, h("a", { className: "button button-light", href: "mailto:hello@timmycamp.xyz" }, "Start a conversation ↗"), h("a", { className: "button button-light", href: "./resume/Timothy_Campbell_Blockchain_Resume.pdf", target: "_blank", rel: "noreferrer" }, "View résumé ↗")));
   }
 
   function Footer() {
