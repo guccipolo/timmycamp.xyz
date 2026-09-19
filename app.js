@@ -196,11 +196,11 @@
   }
 
   function Header() {
-    return h("header", { className: "site-header" }, h("a", { href: "#top", className: "wordmark" }, "Timmy Campbell"), h("nav", { "aria-label": "Primary navigation" }, h("a", { href: "#work" }, "Work"), h("a", { href: "#enterprise" }, "Team impact"), h("a", { href: "#capabilities" }, "How I help"), h("a", { href: "./resume/Timothy_Campbell_Blockchain_Resume.pdf", target: "_blank", rel: "noreferrer" }, "Résumé"), h("a", { href: "#contact" }, "Contact")), h("a", { className: "header-cta", href: "mailto:hello@timmycamp.xyz" }, "Let’s talk"));
+    return h("header", { className: "site-header" }, h("a", { href: "#top", className: "wordmark" }, "Timmy Campbell"), h("nav", { "aria-label": "Primary navigation" }, h("a", { href: "#work" }, "Work"), h("a", { href: "#enterprise" }, "Team impact"), h("a", { href: "#capabilities" }, "How I help"), h("a", { href: "./resume/Timothy_Campbell_Blockchain_Resume.pdf", target: "_blank", rel: "noreferrer" }, "Résumé"), h("a", { href: "#contact" }, "Contact")), h("a", { className: "header-cta", href: "mailto:timcamp25@gmail.com" }, "Let’s talk"));
   }
 
   function Hero() {
-    return h("section", { id: "top", className: "hero" }, h("div", { className: "hero-copy" }, h("p", { className: "kicker" }, "Blockchain · Product · Solutions"), h("h1", null, "I turn blockchain infrastructure into useful products."), h("p", { className: "lede" }, "I connect on-chain systems, customer needs, and delivery—then build the experience around them."), h("div", { className: "hero-actions" }, h("a", { className: "button button-dark", href: "#work" }, "Explore Set"), h("a", { className: "text-link", href: "mailto:hello@timmycamp.xyz" }, "Let’s talk", h("span", null, "↗")))), h("aside", { className: "hero-brief", "aria-label": "What I bring" }, h("p", { className: "brief-label" }, "What I bring"), h("p", { className: "brief-title" }, "Blockchain depth with product judgment and enterprise delivery experience."), h("dl", null, h("div", null, h("dt", null, "Build"), h("dd", null, "On-chain programs and user workflows")), h("div", null, h("dt", null, "Connect"), h("dd", null, "Wallets, data, APIs, and operations")), h("div", null, h("dt", null, "Lead"), h("dd", null, "Requirements, tradeoffs, and delivery")))));
+    return h("section", { id: "top", className: "hero" }, h("div", { className: "hero-copy" }, h("p", { className: "kicker" }, "Blockchain · Product · Solutions"), h("h1", null, "I turn blockchain infrastructure into useful products."), h("p", { className: "lede" }, "I connect on-chain systems, customer needs, and delivery—then build the experience around them."), h("div", { className: "hero-actions" }, h("a", { className: "button button-dark", href: "#work" }, "Explore Set"), h("a", { className: "text-link", href: "mailto:timcamp25@gmail.com" }, "Let’s talk", h("span", null, "↗")))), h("aside", { className: "hero-brief", "aria-label": "What I bring" }, h("p", { className: "brief-label" }, "What I bring"), h("p", { className: "brief-title" }, "Blockchain depth with product judgment and enterprise delivery experience."), h("dl", null, h("div", null, h("dt", null, "Build"), h("dd", null, "On-chain programs and user workflows")), h("div", null, h("dt", null, "Connect"), h("dd", null, "Wallets, data, APIs, and operations")), h("div", null, h("dt", null, "Lead"), h("dd", null, "Requirements, tradeoffs, and delivery")))));
   }
 
   function ProofStrip() {
@@ -218,7 +218,7 @@
         h("div", { className: "case-foundation" }, h("div", null, h("h4", null, "Product problem"), h("p", null, study.problem)), h("div", null, h("h4", null, "My ownership"), h("p", null, study.role))),
         h("div", { className: "outcomes" }, h("p", { className: "block-label" }, "What the solution makes possible"), h("div", null, study.outcomes.map((item, index) => h("p", { key: item }, h("span", null, String(index + 1).padStart(2, "0")), item)))),
         h("div", { className: "case-panels" },
-          h(Panel, { title: "System architecture", meta: `${study.flow.length} layers`, open: openPanels[`${study.id}Flow`] || false, onToggle: () => togglePanel(`${study.id}Flow`), children: h("div", { className: "architecture-flow" }, study.flow.map(([layer, tech, purpose]) => h("div", { key: layer }, h("span", null, layer), h("strong", null, tech), h("p", null, purpose)))) }),
+          h(Panel, { title: "System architecture", meta: `${study.flow.length} layers`, open: openPanels[`${study.id}Flow`] || false, onToggle: () => togglePanel(`${study.id}Flow`), children: h("div", { className: "architecture-panel-inner" }, h(ArchitectureDiagram, { studyId: study.id }), h("p", { className: "architecture-detail-label" }, "Layer details"), h("div", { className: "architecture-flow" }, study.flow.map(([layer, tech, purpose]) => h("div", { key: layer }, h("span", null, layer), h("strong", null, tech), h("p", null, purpose))))) }),
           h(Panel, { title: "Architecture decisions", meta: `${study.decisions.length} ADRs`, open: openPanels[`${study.id}Decisions`] || false, onToggle: () => togglePanel(`${study.id}Decisions`), children: h("div", { className: "decision-list" }, study.decisions.map((item, index) => h("article", { key: item.title }, h("span", null, `ADR-${String(index + 1).padStart(3, "0")}`), h("h5", null, item.title), h("p", null, item.detail)))) }),
           h(Panel, { title: "Production hardening", meta: `${study.hardening.length} controls`, open: openPanels[`${study.id}Hardening`] || false, onToggle: () => togglePanel(`${study.id}Hardening`), children: h("ul", { className: "plain-list" }, study.hardening.map((item) => h("li", { key: item }, item))) }),
           h(Panel, { title: "Designed evolution", meta: "Not yet shipped", open: openPanels[`${study.id}Planned`] || false, onToggle: () => togglePanel(`${study.id}Planned`), children: h("div", null, h("p", { className: "disclosure" }, "These items are architecture and roadmap work, clearly separated from production functionality."), h("ul", { className: "plain-list" }, study.planned.map((item) => h("li", { key: item }, item)))) })
@@ -230,6 +230,96 @@
 
   function Panel({ title, meta, open, onToggle, children }) {
     return h("div", { className: open ? "panel open" : "panel" }, h("button", { type: "button", onClick: onToggle, "aria-expanded": open }, h("span", null, title), h("small", null, meta), h("i", { "aria-hidden": "true" }, open ? "−" : "+")), open && h("div", { className: "panel-content" }, children));
+  }
+
+  function FlowSequence({ nodes }) {
+    return h("div", { className: "diagram-sequence" }, nodes.flatMap((node, index) => {
+      const elements = [h("div", { key: `${node.title}-node`, className: `diagram-node ${node.kind || ""}` }, h("strong", null, node.title), node.detail && h("span", null, node.detail))];
+      if (index < nodes.length - 1) elements.push(h("span", { key: `${node.title}-arrow`, className: "diagram-arrow", "aria-hidden": "true" }, "→"));
+      return elements;
+    }));
+  }
+
+  function SetArchitectureDiagram() {
+    const interactionFlow = [
+      { title: "Buyer / Seller", detail: "Wallet-signed actions", kind: "user" },
+      { title: "Next.js Experience", detail: "Marketplace + API routes", kind: "offchain" },
+      { title: "Solana Program", detail: "Anchor instructions", kind: "onchain" },
+      { title: "Escrow", detail: "Non-custodial settlement", kind: "onchain" },
+    ];
+    const projectionFlow = [
+      { title: "Solana Events", detail: "Authoritative state", kind: "onchain" },
+      { title: "Helius + Indexer", detail: "Event ingestion", kind: "external" },
+      { title: "Reconciliation", detail: "Backfill + repair", kind: "offchain" },
+      { title: "PostgreSQL", detail: "Read model", kind: "offchain" },
+      { title: "Marketplace UI", detail: "Search + operations", kind: "user" },
+    ];
+    const support = [
+      ["IPFS", "Product media and metadata"],
+      ["EasyPost", "Encrypted fulfillment and carrier updates"],
+      ["RPC fallbacks", "Alchemy, Triton, Helius, and public RPC"],
+      ["Sentry + Better Stack", "App errors and outside-in uptime"],
+    ];
+
+    return h("section", { className: "architecture-visual set-diagram", "aria-labelledby": "set-architecture-title" },
+      h("div", { className: "diagram-heading" }, h("div", null, h("p", { className: "diagram-eyebrow" }, "Current architecture"), h("h5", { id: "set-architecture-title" }, "Trust on-chain. Commerce experience off-chain.")), h("p", null, "Financial state remains verifiable while indexed data keeps the marketplace fast and usable.")),
+      h("div", { className: "diagram-lane" }, h("span", { className: "boundary-label" }, "User → on-chain boundary"), h(FlowSequence, { nodes: interactionFlow })),
+      h("div", { className: "diagram-lane" }, h("span", { className: "boundary-label" }, "On-chain → off-chain projection"), h(FlowSequence, { nodes: projectionFlow })),
+      h("div", { className: "support-boundary" }, h("span", { className: "boundary-label" }, "Supporting services"), h("div", { className: "support-grid" }, support.map(([title, detail]) => h("article", { key: title }, h("strong", null, title), h("span", null, detail)))))
+    );
+  }
+
+  function LookLabArchitectureDiagram() {
+    const [activeProduct, setActiveProduct] = useState("bhori");
+    const products = {
+      bhori: {
+        label: "Bhori",
+        subtitle: "Reference-based AI try-on",
+        nodes: [
+          { title: "Source image", detail: "Frame + lens choices", kind: "user" },
+          { title: "Browser prep", detail: "Validate + optimize", kind: "offchain" },
+          { title: "Modal", detail: "Inference service", kind: "external" },
+          { title: "Flux Kontext + LoRA", detail: "Product-aware edit", kind: "ai" },
+          { title: "Generated result", detail: "Progress events + image", kind: "user" },
+        ],
+      },
+      infy: {
+        label: "INFY",
+        subtitle: "Interactive 3D configuration",
+        nodes: [
+          { title: "Multi-mesh GLB", detail: "Separated printable parts", kind: "external" },
+          { title: "Three.js / WebGL", detail: "Browser rendering", kind: "offchain" },
+          { title: "Customization state", detail: "Frame color selection", kind: "offchain" },
+          { title: "3D preview", detail: "Rotate, zoom, inspect", kind: "user" },
+        ],
+      },
+    };
+    const active = products[activeProduct];
+
+    function selectWithKeyboard(event, productId) {
+      const order = ["bhori", "infy"];
+      const currentIndex = order.indexOf(productId);
+      let nextIndex = currentIndex;
+      if (event.key === "ArrowRight" || event.key === "ArrowDown") nextIndex = (currentIndex + 1) % order.length;
+      if (event.key === "ArrowLeft" || event.key === "ArrowUp") nextIndex = (currentIndex - 1 + order.length) % order.length;
+      if (event.key === "Home") nextIndex = 0;
+      if (event.key === "End") nextIndex = order.length - 1;
+      if (nextIndex === currentIndex) return;
+      event.preventDefault();
+      const nextProduct = order[nextIndex];
+      setActiveProduct(nextProduct);
+      requestAnimationFrame(() => document.getElementById(`architecture-tab-${nextProduct}`).focus());
+    }
+
+    return h("section", { className: "architecture-visual looklab-diagram", "aria-labelledby": "looklab-architecture-title" },
+      h("div", { className: "diagram-heading" }, h("div", null, h("p", { className: "diagram-eyebrow" }, "Current architecture"), h("h5", { id: "looklab-architecture-title" }, "Two products. Two purpose-built pipelines.")), h("p", null, "Switch products to see how each experience turns a different customer question into a visual answer.")),
+      h("div", { className: "product-switch", role: "tablist", "aria-label": "LookLab product architecture" }, Object.entries(products).map(([id, product]) => h("button", { id: `architecture-tab-${id}`, key: id, type: "button", role: "tab", className: activeProduct === id ? "active" : "", "aria-selected": activeProduct === id, "aria-controls": `architecture-panel-${id}`, tabIndex: activeProduct === id ? 0 : -1, onClick: () => setActiveProduct(id), onKeyDown: (event) => selectWithKeyboard(event, id) }, h("strong", null, product.label), h("span", null, product.subtitle)))),
+      h("div", { id: `architecture-panel-${activeProduct}`, className: "product-diagram-panel", role: "tabpanel", "aria-labelledby": `architecture-tab-${activeProduct}`, tabIndex: 0 }, h("span", { className: "boundary-label" }, active.subtitle), h(FlowSequence, { nodes: active.nodes }))
+    );
+  }
+
+  function ArchitectureDiagram({ studyId }) {
+    return studyId === "set" ? h(SetArchitectureDiagram) : h(LookLabArchitectureDiagram);
   }
 
   function EnterpriseWork() {
@@ -259,7 +349,7 @@
   }
 
   function Contact() {
-    return h("section", { id: "contact", className: "contact-section" }, h("p", { className: "kicker" }, "Let’s build useful crypto products"), h("h2", null, "Bring me the protocol. I’ll help shape the product around it."), h("p", null, "I’m focused on blockchain solutions architecture, ecosystem integrations, and technical product roles."), h("div", { className: "contact-actions" }, h("a", { className: "button button-light", href: "mailto:hello@timmycamp.xyz" }, "Start a conversation ↗"), h("a", { className: "button button-light", href: "./resume/Timothy_Campbell_Blockchain_Resume.pdf", target: "_blank", rel: "noreferrer" }, "View résumé ↗")));
+    return h("section", { id: "contact", className: "contact-section" }, h("p", { className: "kicker" }, "Let’s build useful crypto products"), h("h2", null, "Bring me the protocol. I’ll help shape the product around it."), h("p", null, "I’m focused on blockchain solutions architecture, ecosystem integrations, and technical product roles."), h("div", { className: "contact-actions" }, h("a", { className: "button button-light", href: "mailto:timcamp25@gmail.com" }, "timcamp25@gmail.com ↗"), h("a", { className: "button button-light", href: "./resume/Timothy_Campbell_Blockchain_Resume.pdf", target: "_blank", rel: "noreferrer" }, "View résumé ↗")));
   }
 
   function Footer() {

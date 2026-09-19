@@ -149,6 +149,41 @@ button { color: inherit; font: inherit; }
 .panel.open > button { background: #f1f1ed; }
 .panel-content { padding: 12px 56px 52px; background: #f1f1ed; }
 
+.architecture-panel-inner { display: grid; gap: 46px; }
+.architecture-visual { overflow: hidden; border: 1px solid var(--ink); background: var(--white); }
+.diagram-heading { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(240px, 0.55fr); gap: 36px; align-items: end; padding: 30px; border-bottom: 1px solid var(--ink); }
+.diagram-eyebrow, .architecture-detail-label { margin: 0 0 12px; color: var(--signal); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.11em; text-transform: uppercase; }
+.diagram-heading h5 { max-width: 650px; margin: 0; font-size: clamp(1.65rem, 3vw, 2.7rem); font-weight: 650; letter-spacing: -0.045em; line-height: 1.02; }
+.diagram-heading > p { margin: 0; color: var(--muted); font-size: 0.9rem; line-height: 1.55; }
+.diagram-lane, .product-diagram-panel, .support-boundary { position: relative; padding: 48px 30px 28px; border-bottom: 1px solid var(--line); }
+.boundary-label { position: absolute; top: 14px; left: 30px; color: var(--muted); font-size: 0.67rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+.diagram-sequence { display: grid; grid-template-columns: minmax(0, 1fr) 28px minmax(0, 1fr) 28px minmax(0, 1fr) 28px minmax(0, 1fr) 28px minmax(0, 1fr); align-items: stretch; }
+.diagram-node { min-width: 0; padding: 18px; border-top: 3px solid var(--ink); background: var(--paper); }
+.diagram-node.user { border-color: var(--lime); background: var(--ink); color: var(--white); }
+.diagram-node.onchain { border-color: var(--signal); }
+.diagram-node.external { border-color: #7a7a7a; }
+.diagram-node.ai { border-color: var(--lime); background: #f2f5d8; }
+.diagram-node strong, .diagram-node span { display: block; }
+.diagram-node strong { font-size: 0.88rem; line-height: 1.25; }
+.diagram-node span { margin-top: 16px; color: var(--muted); font-size: 0.72rem; line-height: 1.4; }
+.diagram-node.user span { color: #bcbcbc; }
+.diagram-arrow { display: grid; place-items: center; color: var(--signal); font-size: 1.2rem; }
+.support-boundary { border-bottom: 0; }
+.support-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.support-grid article { min-height: 118px; padding: 18px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.support-grid strong, .support-grid span { display: block; }
+.support-grid strong { font-size: 0.83rem; }
+.support-grid span { margin-top: 24px; color: var(--muted); font-size: 0.72rem; line-height: 1.4; }
+.architecture-detail-label { margin: 0 0 -34px; }
+.product-switch { display: grid; grid-template-columns: repeat(2, 1fr); border-bottom: 1px solid var(--ink); }
+.product-switch button { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: baseline; padding: 20px 30px; border: 0; border-right: 1px solid var(--line); background: transparent; color: var(--muted); text-align: left; cursor: pointer; }
+.product-switch button:last-child { border-right: 0; }
+.product-switch button.active { background: var(--ink); color: var(--white); box-shadow: inset 0 -4px 0 var(--lime); }
+.product-switch button:focus-visible { outline: 3px solid var(--signal); outline-offset: -3px; }
+.product-switch strong { color: inherit; font-size: 1rem; }
+.product-switch span { font-size: 0.75rem; }
+.product-diagram-panel { border-bottom: 0; }
+
 .architecture-flow { border-top: 1px solid var(--ink); }
 .architecture-flow > div { display: grid; grid-template-columns: 130px 240px 1fr; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--line); }
 .architecture-flow span { color: var(--signal); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; }
@@ -235,6 +270,9 @@ footer { min-height: 100px; display: flex; justify-content: space-between; align
   .enterprise-grid h3 { margin-top: 30px; }
   .lens-detail { grid-template-columns: 1fr; gap: 44px; }
   .architecture-flow > div { grid-template-columns: 100px 180px 1fr; }
+  .diagram-sequence { grid-template-columns: minmax(0, 1fr) 20px minmax(0, 1fr) 20px minmax(0, 1fr) 20px minmax(0, 1fr) 20px minmax(0, 1fr); }
+  .diagram-node { padding: 14px; }
+  .support-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 640px) {
@@ -267,6 +305,19 @@ footer { min-height: 100px; display: flex; justify-content: space-between; align
   .panel > button { grid-template-columns: 1fr 30px; padding: 22px 24px; }
   .panel > button small { display: none; }
   .panel-content { padding: 8px 24px 34px; }
+  .architecture-panel-inner { gap: 38px; }
+  .diagram-heading { grid-template-columns: 1fr; gap: 20px; padding: 24px 20px; }
+  .diagram-lane, .product-diagram-panel, .support-boundary { padding: 50px 20px 24px; }
+  .boundary-label { left: 20px; }
+  .diagram-sequence { grid-template-columns: 1fr; }
+  .diagram-arrow { min-height: 30px; transform: rotate(90deg); }
+  .diagram-node { min-height: auto; padding: 18px; }
+  .diagram-node span { margin-top: 8px; }
+  .support-grid { grid-template-columns: 1fr; }
+  .support-grid article { min-height: auto; }
+  .support-grid span { margin-top: 10px; }
+  .product-switch button { grid-template-columns: 1fr; gap: 5px; padding: 18px 20px; }
+  .architecture-detail-label { margin-bottom: -26px; }
   .architecture-flow > div { grid-template-columns: 1fr; gap: 8px; }
   .decision-list, .plain-list { grid-template-columns: 1fr; }
   .decision-list article { min-height: auto; }
