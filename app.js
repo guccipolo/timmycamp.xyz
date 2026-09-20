@@ -156,20 +156,28 @@
 
   const roleLenses = [
     {
-      id: "blockchain",
-      label: "Blockchain Solutions",
-      title: "I turn on-chain capability into a product people can actually use.",
-      body:
-        "I connect smart contracts, wallets, indexing, off-chain data, privacy, and operations around a clear customer need.",
-      evidence: ["Solana + Anchor programs", "Escrow and marketplace state", "Indexing and reconciliation", "Cross-chain architecture"],
-    },
-    {
       id: "architecture",
       label: "Solutions Architecture",
       title: "I turn business needs into systems teams can trust and operate.",
       body:
         "I connect requirements to secure, reliable systems with clear boundaries, ownership, integrations, and tradeoffs.",
       evidence: ["System boundaries and ADRs", "Security and privacy", "Reliability and recovery", "Integration and release strategy"],
+    },
+    {
+      id: "ai",
+      label: "Applied AI",
+      title: "I use AI where it can remove friction or create a better experience.",
+      body:
+        "I connect models, data, interfaces, inference infrastructure, evaluation, and operational controls around a specific user outcome.",
+      evidence: ["Flux Kontext + LoRA", "RAG-assisted workflows", "Inference architecture", "Evaluation and observability"],
+    },
+    {
+      id: "blockchain",
+      label: "Blockchain Solutions",
+      title: "I turn on-chain capability into a product people can actually use.",
+      body:
+        "I connect smart contracts, wallets, indexing, off-chain data, privacy, and operations around a clear customer need.",
+      evidence: ["Solana + Anchor programs", "Escrow and marketplace state", "Indexing and reconciliation", "Cross-chain architecture"],
     },
     {
       id: "product",
@@ -183,7 +191,7 @@
 
   function App() {
     const [activeCase, setActiveCase] = useState("set");
-    const [activeLens, setActiveLens] = useState("blockchain");
+    const [activeLens, setActiveLens] = useState("architecture");
     const [openPanels, setOpenPanels] = useState({});
     const study = useMemo(() => caseStudies.find((item) => item.id === activeCase), [activeCase]);
     const lens = useMemo(() => roleLenses.find((item) => item.id === activeLens), [activeLens]);
@@ -196,15 +204,15 @@
   }
 
   function Header() {
-    return h("header", { className: "site-header" }, h("a", { href: "#top", className: "wordmark" }, "Timmy Campbell"), h("nav", { "aria-label": "Primary navigation" }, h("a", { href: "#work" }, "Work"), h("a", { href: "#enterprise" }, "Team impact"), h("a", { href: "#capabilities" }, "How I help"), h("a", { href: "./resume/Timothy_Campbell_Blockchain_Resume.pdf", target: "_blank", rel: "noreferrer" }, "Résumé"), h("a", { href: "#contact" }, "Contact")), h("a", { className: "header-cta", href: "mailto:timcamp25@gmail.com" }, "Let’s talk"));
+    return h("header", { className: "site-header" }, h("a", { href: "#top", className: "wordmark" }, "Timmy Campbell"), h("nav", { "aria-label": "Primary navigation" }, h("a", { href: "#work" }, "Work"), h("a", { href: "#enterprise" }, "Team impact"), h("a", { href: "#capabilities" }, "How I help"), h("a", { href: "#contact" }, "Contact")), h("a", { className: "header-cta", href: "mailto:timcamp25@gmail.com" }, "Let’s talk"));
   }
 
   function Hero() {
-    return h("section", { id: "top", className: "hero" }, h("div", { className: "hero-copy" }, h("p", { className: "kicker" }, "Blockchain · Product · Solutions"), h("h1", null, "I turn blockchain infrastructure into useful products."), h("p", { className: "lede" }, "I connect on-chain systems, customer needs, and delivery—then build the experience around them."), h("div", { className: "hero-actions" }, h("a", { className: "button button-dark", href: "#work" }, "Explore Set"), h("a", { className: "text-link", href: "mailto:timcamp25@gmail.com" }, "Let’s talk", h("span", null, "↗")))), h("aside", { className: "hero-brief", "aria-label": "What I bring" }, h("p", { className: "brief-label" }, "What I bring"), h("p", { className: "brief-title" }, "Blockchain depth with product judgment and enterprise delivery experience."), h("dl", null, h("div", null, h("dt", null, "Build"), h("dd", null, "On-chain programs and user workflows")), h("div", null, h("dt", null, "Connect"), h("dd", null, "Wallets, data, APIs, and operations")), h("div", null, h("dt", null, "Lead"), h("dd", null, "Requirements, tradeoffs, and delivery")))));
+    return h("section", { id: "top", className: "hero" }, h("div", { className: "hero-copy" }, h("p", { className: "kicker" }, "Solutions architecture · AI · Blockchain · Product"), h("h1", null, "I turn complex needs into useful systems."), h("p", { className: "lede" }, "I connect customer problems, technical architecture, and delivery—then shape the product experience around them."), h("div", { className: "hero-actions" }, h("a", { className: "button button-dark", href: "#work" }, "Explore the work"), h("a", { className: "text-link", href: "mailto:timcamp25@gmail.com" }, "Let’s talk", h("span", null, "↗")))), h("aside", { className: "hero-brief", "aria-label": "What I bring" }, h("p", { className: "brief-label" }, "What I bring"), h("p", { className: "brief-title" }, "Architecture judgment, product thinking, and enterprise delivery across emerging technology."), h("dl", null, h("div", null, h("dt", null, "Frame"), h("dd", null, "Customer needs, constraints, and outcomes")), h("div", null, h("dt", null, "Design"), h("dd", null, "Systems, data, integrations, and controls")), h("div", null, h("dt", null, "Deliver"), h("dd", null, "Priorities, tradeoffs, and team alignment")))));
   }
 
   function ProofStrip() {
-    const items = [["On-chain", "Anchor marketplace + escrow"], ["Off-chain", "Indexer + PostgreSQL read model"], ["Private", "Encrypted fulfillment data"], ["Global", "Cross-chain dispute design"]];
+    const items = [["Architecture", "Boundaries, tradeoffs, and reliability"], ["Applied AI", "Model workflows and user experience"], ["Blockchain", "Programs, escrow, and indexed state"], ["Product", "Discovery, priorities, and delivery"]];
     return h("section", { className: "proof-strip", "aria-label": "Portfolio evidence" }, items.map(([value, label]) => h("div", { key: label }, h("strong", null, value), h("span", null, label))));
   }
 
@@ -340,7 +348,7 @@
   }
 
   function RoleLens({ lens, activeLens, setActiveLens }) {
-    return h("section", { id: "capabilities", className: "lens-section" }, h("div", { className: "section-intro" }, h("p", { className: "kicker" }, "How I can help"), h("h2", null, "Blockchain first. Product always."), h("p", null, "Select the lens most relevant to your team.")), h("div", { className: "lens-tabs", role: "tablist", "aria-label": "Professional capabilities" }, roleLenses.map((item) => h("button", { key: item.id, type: "button", role: "tab", className: activeLens === item.id ? "active" : "", onClick: () => setActiveLens(item.id), "aria-selected": activeLens === item.id }, item.label))), h("div", { className: "lens-detail", role: "tabpanel" }, h("div", null, h("h3", null, lens.title), h("p", null, lens.body)), h("ul", null, lens.evidence.map((item) => h("li", { key: item }, item)))));
+    return h("section", { id: "capabilities", className: "lens-section" }, h("div", { className: "section-intro" }, h("p", { className: "kicker" }, "How I can help"), h("h2", null, "Architecture first. Product always."), h("p", null, "Select the lens most relevant to your team.")), h("div", { className: "lens-tabs", role: "tablist", "aria-label": "Professional capabilities" }, roleLenses.map((item) => h("button", { key: item.id, type: "button", role: "tab", className: activeLens === item.id ? "active" : "", onClick: () => setActiveLens(item.id), "aria-selected": activeLens === item.id }, item.label))), h("div", { className: "lens-detail", role: "tabpanel" }, h("div", null, h("h3", null, lens.title), h("p", null, lens.body)), h("ul", null, lens.evidence.map((item) => h("li", { key: item }, item)))));
   }
 
   function Approach() {
@@ -349,11 +357,11 @@
   }
 
   function Contact() {
-    return h("section", { id: "contact", className: "contact-section" }, h("p", { className: "kicker" }, "Let’s build useful crypto products"), h("h2", null, "Bring me the protocol. I’ll help shape the product around it."), h("p", null, "I’m focused on blockchain solutions architecture, ecosystem integrations, and technical product roles."), h("div", { className: "contact-actions" }, h("a", { className: "button button-light", href: "mailto:timcamp25@gmail.com" }, "timcamp25@gmail.com ↗"), h("a", { className: "button button-light", href: "./resume/Timothy_Campbell_Blockchain_Resume.pdf", target: "_blank", rel: "noreferrer" }, "View résumé ↗")));
+    return h("section", { id: "contact", className: "contact-section" }, h("p", { className: "kicker" }, "Let’s build something useful"), h("h2", null, "Bring me the need. I’ll help shape the system and product around it."), h("p", null, "I work across solutions architecture, applied AI, blockchain systems, and technical product delivery."), h("div", { className: "contact-actions" }, h("a", { className: "button button-light", href: "mailto:timcamp25@gmail.com" }, "timcamp25@gmail.com ↗")));
   }
 
   function Footer() {
-    return h("footer", null, h("span", null, "Timmy Campbell"), h("span", null, "Blockchain Product & Solutions"), h("span", null, "timmycamp.xyz"));
+    return h("footer", null, h("span", null, "Timmy Campbell"), h("span", null, "Solutions Architecture · AI · Blockchain · Product"), h("span", null, "timmycamp.xyz"));
   }
 
   ReactDOM.createRoot(document.getElementById("root")).render(h(App));
