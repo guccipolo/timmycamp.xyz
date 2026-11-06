@@ -6,7 +6,7 @@
     {
       id: "set",
       index: "01",
-      type: "Distributed commerce",
+      type: "Blockchain marketplace",
       title: "Set",
       url: "https://sl0p.exchange",
       urlLabel: "View live product",
@@ -16,7 +16,7 @@
       problem:
         "If crypto is borderless and trustless, its marketplaces should be too. Set applies that ethos to a familiar need: buying and selling clothes anywhere.",
       role:
-        "I designed and built the product, marketplace architecture, commerce workflows, privacy controls, and operational safeguards.",
+        "I defined the product vision, wrote the PRD, mapped the data and user journeys, designed the system, and led the product from idea to launch.",
       outcomes: [
         "Familiar buying and selling backed by non-custodial escrow.",
         "Fast product discovery without compromising settlement integrity.",
@@ -191,7 +191,7 @@
 
   function App() {
     const [activeCase, setActiveCase] = useState("set");
-    const [activeLens, setActiveLens] = useState("architecture");
+    const [activeLens, setActiveLens] = useState("product");
     const [openPanels, setOpenPanels] = useState({});
     const study = useMemo(() => caseStudies.find((item) => item.id === activeCase), [activeCase]);
     const lens = useMemo(() => roleLenses.find((item) => item.id === activeLens), [activeLens]);
@@ -208,11 +208,11 @@
   }
 
   function Hero() {
-    return h("section", { id: "top", className: "hero" }, h("div", { className: "hero-copy" }, h("p", { className: "kicker" }, "Solutions architecture · AI · Blockchain · Product"), h("h1", null, "I turn complex needs into useful systems."), h("p", { className: "lede" }, "I connect customer problems, technical architecture, and delivery—then shape the product experience around them."), h("div", { className: "hero-actions" }, h("a", { className: "button button-dark", href: "#work" }, "Explore the work"), h("a", { className: "text-link", href: "mailto:timcamp25@gmail.com" }, "Let’s talk", h("span", null, "↗")))), h("aside", { className: "hero-brief", "aria-label": "What I bring" }, h("p", { className: "brief-label" }, "What I bring"), h("p", { className: "brief-title" }, "Architecture judgment, product thinking, and enterprise delivery across emerging technology."), h("dl", null, h("div", null, h("dt", null, "Frame"), h("dd", null, "Customer needs, constraints, and outcomes")), h("div", null, h("dt", null, "Design"), h("dd", null, "Systems, data, integrations, and controls")), h("div", null, h("dt", null, "Deliver"), h("dd", null, "Priorities, tradeoffs, and team alignment")))));
+    return h("section", { id: "top", className: "hero" }, h("div", { className: "hero-copy" }, h("p", { className: "kicker" }, "Technical Product · Blockchain · AI · Solutions Architecture"), h("h1", null, "I turn customer needs into products that work."), h("p", { className: "lede" }, "I define the problem, shape the product, design the system, and help teams deliver it."), h("div", { className: "hero-actions" }, h("a", { className: "button button-dark", href: "#work" }, "Explore the work"), h("a", { className: "text-link", href: "mailto:timcamp25@gmail.com" }, "Let’s talk", h("span", null, "↗")))), h("aside", { className: "hero-brief", "aria-label": "What I bring" }, h("p", { className: "brief-label" }, "What I bring"), h("p", { className: "brief-title" }, "Product leadership backed by technical depth and hands-on delivery."), h("dl", null, h("div", null, h("dt", null, "Understand"), h("dd", null, "Customer needs and business goals")), h("div", null, h("dt", null, "Shape"), h("dd", null, "Requirements, priorities, and system design")), h("div", null, h("dt", null, "Deliver"), h("dd", null, "Clear plans, aligned teams, and measurable results")))));
   }
 
   function ProofStrip() {
-    const items = [["Architecture", "Boundaries, tradeoffs, and reliability"], ["Applied AI", "Model workflows and user experience"], ["Blockchain", "Programs, escrow, and indexed state"], ["Product", "Discovery, priorities, and delivery"]];
+    const items = [["20%", "Less development time"], ["15%", "Better client efficiency"], ["3 days", "Faster ticket lead time"], ["90%", "AI triage agreement"]];
     return h("section", { className: "proof-strip", "aria-label": "Portfolio evidence" }, items.map(([value, label]) => h("div", { key: label }, h("strong", null, value), h("span", null, label))));
   }
 
@@ -352,7 +352,7 @@
   }
 
   function RoleLens({ lens, activeLens, setActiveLens }) {
-    return h("section", { id: "capabilities", className: "lens-section" }, h("div", { className: "section-intro" }, h("p", { className: "kicker" }, "How I can help"), h("h2", null, "Architecture first. Product always."), h("p", null, "Select the lens most relevant to your team.")), h("div", { className: "lens-tabs", role: "tablist", "aria-label": "Professional capabilities" }, roleLenses.map((item) => h("button", { key: item.id, type: "button", role: "tab", className: activeLens === item.id ? "active" : "", onClick: () => setActiveLens(item.id), "aria-selected": activeLens === item.id }, item.label))), h("div", { className: "lens-detail", role: "tabpanel" }, h("div", null, h("h3", null, lens.title), h("p", null, lens.body)), h("ul", null, lens.evidence.map((item) => h("li", { key: item }, item)))));
+    return h("section", { id: "capabilities", className: "lens-section" }, h("div", { className: "section-intro" }, h("p", { className: "kicker" }, "How I can help"), h("h2", null, "Start with the need. Build the right product."), h("p", null, "Choose the view most useful to your team.")), h("div", { className: "lens-tabs", role: "tablist", "aria-label": "Professional capabilities" }, roleLenses.map((item) => h("button", { key: item.id, type: "button", role: "tab", className: activeLens === item.id ? "active" : "", onClick: () => setActiveLens(item.id), "aria-selected": activeLens === item.id }, item.label))), h("div", { className: "lens-detail", role: "tabpanel" }, h("div", null, h("h3", null, lens.title), h("p", null, lens.body)), h("ul", null, lens.evidence.map((item) => h("li", { key: item }, item)))));
   }
 
   function Approach() {
@@ -365,7 +365,7 @@
   }
 
   function Footer() {
-    return h("footer", null, h("span", null, "Timmy Campbell"), h("span", null, "Solutions Architecture · AI · Blockchain · Product"), h("span", null, "timmycamp.xyz"));
+    return h("footer", null, h("span", null, "Timmy Campbell"), h("span", null, "Technical Product · Blockchain · AI · Solutions Architecture"), h("span", null, "timmycamp.xyz"));
   }
 
   ReactDOM.createRoot(document.getElementById("root")).render(h(App));
